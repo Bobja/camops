@@ -1,0 +1,41 @@
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 users-new-container">
+        <h1 class="text-center text-black">New Join</h1>
+        <%= form_for @user, url: admin_users_path do |f| %>
+          <div class="form-group">
+            <%= f.label :氏名, class: 'text-black' %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, class: 'text-black' %>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :パスワード, class: 'text-black' %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :パスワードの確認, class: 'text-black' %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :住所, class: 'text-black' %>
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :生年月日, class: 'text-black' %>
+            <%= f.date_select :birthday, use_month_numbers: true, start_year: 1960, end_year: (Time.now.year - 18), default: Date.new(1990, 1, 1), date_separator: '/', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :ランク, class: 'text-black' %>
+            <%= f.select :rank, [["-", "-"], ["A", "A"], ["B", "B"], ["C", "C"], ["D", "D"]], include_blank: "選択して下さい", class: 'form-control' %>
+          </div>
+
+          <%= f.submit "登録", class: 'btn-block btn-gray' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

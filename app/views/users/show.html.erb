@@ -1,0 +1,31 @@
+<div class="users-new-wrapper text-center">
+  <div class="container admin-userList-container">
+    <h1>Account details</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>住所</th>
+          <th>生年月日</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%= @user.id %></td>
+          	<td><%= @user.name %></td>
+          	<td><%= @user.address %></td>
+          	<td><%= @user.birthday %></td>
+          </tr>
+      </tbody>
+    </table>
+    <div class="map">
+    <%= content_tag(:iframe, 'map', src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyCEv35kjleMjnt2Bfim9UiJxabMK_db4Wc&q=' + @user.address, width: 1000, height: 400, frameborder: 0) %>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 col-md-offset-4">
+        <%= link_to '編集', edit_user_path, class: 'btn btn-block btn-gray' %>
+      </div>
+    </div>
+  </div>
+</div>

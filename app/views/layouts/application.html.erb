@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Camops</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <script src="https://kit.fontawesome.com/f3520b0245.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    <% end %>
+    
+  <% if logged_in? %>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+      <div class="container">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= link_to current_user.name, "/users/#{current_user.id}", class: 'current-user-name' %>
+            </li>
+            <li>
+              <%= link_to users_path do %>
+                <i class="fas fa-backward my-icon"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to logout_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt my-icon"></i>
+              <% end %>
+            </li>
+        </ul>
+      </div>
+    </nav>
+  <% end %>
+    
+    <%= yield %>
+    
+    <script>
+      $(function(){
+        $(".alert").fadeOut(5000);
+      });
+    </script>
+  </body>
+</html>
