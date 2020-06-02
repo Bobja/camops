@@ -6,6 +6,7 @@
         <tr>
           <th>ID</th>
           <th>名前</th>
+          <th>Email</th>
           <th>住所</th>
           <th>年齢</th>
           <th>ランク</th>
@@ -19,6 +20,7 @@
           <tr>
             <td><%= user.id %></td>
           	<td><%= user.name %></td>
+          	<td><%= user.email %></td>
           	<td><%= user.address %></td>
           	<td><%= (Date.today.strftime("%Y%m%d").to_i - user.birthday.strftime("%Y%m%d").to_i) / 10000 %></td>
           	<td><%= user.rank %></td>
