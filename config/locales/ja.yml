@@ -1,0 +1,8 @@
+ja:
+  enums:
+    work:
+      status:
+        notyet: "未着手"
+        requesting: "依頼中"
+        submitted: "依頼済み"
+        completed: "完了"
