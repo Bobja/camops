@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   add_flash_types :success, :info, :warning, :danger
   
-  helper_method :current_user, :logged_in?, :authenticate_user
+  helper_method :current_user, :logged_in?, :admin_user, :authenticate_user, :forbid_login_user, :ensure_correct_user
   
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !current_user.nil?
+  end
+  
+  def admin_user
+    redirect_to(users_url) unless current_user.admin?
   end
   
   def authenticate_user

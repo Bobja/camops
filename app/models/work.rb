@@ -5,7 +5,7 @@ class Work < ApplicationRecord
   validates :address, presence: true
   validates :unitPrice, presence: true
   
-  belongs_to :user
+  belongs_to :user, optional: true
   
   enum status: { notyet: 0, requesting: 1, submitted:2, completed:3 }
 end

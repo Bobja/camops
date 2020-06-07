@@ -5,11 +5,11 @@
       <div class="col-md-offset-4 col-md-4 col-md-offset-4">
         <% if current_user.admin == true %>
           <%= link_to "カメラマン一覧", admin_users_path, class: 'btn btn-block btn-gray' %>
-          <%= link_to "案件一覧", "#", class: 'btn btn-block btn-gray' %>
+          <%= link_to "案件一覧", admin_works_path, class: 'btn btn-block btn-gray' %>
           <%= link_to "請求書一覧", "#", class: 'btn btn-block btn-gray' %>
         <% else %>
           <%= link_to "アカウント詳細", "/users/#{current_user.id}", class: 'btn btn-block btn-gray' %>
-          <%= link_to "案件一覧", "#", class: 'btn btn-block btn-gray' %>
+          <%= link_to "案件一覧", "/works", class: 'btn btn-block btn-gray' %>
           <%= link_to "請求書一覧", "#", class: 'btn btn-block btn-gray' %>
         <% end %>
       </div>

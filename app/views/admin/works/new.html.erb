@@ -1,0 +1,37 @@
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 users-new-container">
+        <h1 class="text-center text-black">New Work</h1>
+        <%= form_for @work, url: admin_works_path do |f| %>
+          <div class="form-group">
+            <%= f.label :施行日, class: 'text-black work-date' %>
+            <%= f.date_select :date, use_month_numbers: true, start_year: 2010, end_year: (Time.now.year + 10), default: Date.new(2020, 1, 1), date_separator: '/', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :案件名, class: 'text-black' %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :企業名, class: 'text-black' %>
+            <%= f.text_field :company, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :撮影場所, class: 'text-black' %>
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :単価, class: 'text-black' %>
+            <%= f.number_field :unitPrice, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :詳細, class: 'text-black' %>
+            <%= f.text_area :details, class: 'form-control' %>
+          </div>
+
+          <%= f.submit "登録", class: 'btn-block btn-gray' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
