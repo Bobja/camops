@@ -51,6 +51,54 @@ h1, h2 {
   }
 }
 
+.btn-red-mini {
+  color: white;
+  border: 1px solid #FF3366;
+  padding: 10px;
+  font-size: 13px;
+  background-color: #FF3366;
+  
+    &:hover {
+    color: white;
+  }
+}
+
+.btn-yellow-mini {
+  color: white;
+  border: 1px solid #FF9900;
+  padding: 10px;
+  font-size: 13px;
+  background-color: #FF9900;
+  
+    &:hover {
+    color: white;
+  }
+}
+
+.btn-green-mini {
+  color: white;
+  border: 1px solid #00CC00;
+  padding: 10px;
+  font-size: 13px;
+  background-color: #00CC00;
+  
+    &:hover {
+    color: white;
+  }
+}
+
+.btn-silver-mini {
+  color: white;
+  border: 1px solid #999999;
+  padding: 10px;
+  font-size: 13px;
+  background-color: #999999;
+  
+    &:hover {
+    color: white;
+  }
+}
+
 .top-hero-wrapper {
   width: 100vw;
   height: 100vh;

@@ -20,7 +20,15 @@
           	<td><%= work.name %></td>
           	<td><%= work.company %></td>
           	<td><%= work.address %></td>
-          	<td><%= work.status_i18n %></td>
+          	<% if work.status == "notyet" %>
+          	  <td><%= link_to work.status_i18n , "#", class: 'btn btn-block btn-red-mini' %></td>
+          	<% elsif work.status == "requesting" %>
+          	  <td><%= link_to work.status_i18n , "#", class: 'btn btn-block btn-yellow-mini' %></td>
+          	<% elsif work.status == "submitted" %>
+          	  <td><%= link_to work.status_i18n , "#", class: 'btn btn-block btn-green-mini' %></td>
+          	<% else %>
+          	  <td><%= link_to work.status_i18n , "#", class: 'btn btn-block btn-silver-mini' %></td>
+          	<% end %>
           	<td><%= link_to '詳細', "#", class: 'btn btn-block btn-gray-mini' %></td>
           	<td><%= link_to '削除', admin_work_path(work.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: 'btn btn-block btn-gray-mini' %></td>
           </tr>
