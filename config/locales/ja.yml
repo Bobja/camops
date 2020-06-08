@@ -6,3 +6,8 @@ ja:
         requesting: "依頼中"
         submitted: "依頼済み"
         completed: "完了"
+  date:
+    order:
+      - :year
+      - :month
+      - :day
