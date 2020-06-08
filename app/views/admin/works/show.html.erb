@@ -11,7 +11,7 @@
             <h2 class="work-author">合計金額：　<%= @work.totalPrice %>円</h2>
             <h2 class="work-author">ステータス：　<%= @work.status_i18n %></h2>
             <% if @work.user_id != nil %>
-              <h2 class="work-author">担当カメラマン：　<%= @user.name %></h2>
+              <h2 class="work-author">担当カメラマン：　<%= @work.user.name %></h2>
             <% end %>
             <h2 class="work-author">詳細：
              <p><%= @work.details %></p>
@@ -28,17 +28,17 @@
         <div class="col-md-4">
           <%= link_to '削除', admin_work_path(@work.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: 'btn btn-block btn-gray' %>
         </div>
-        
-        <div class="row">
-          <div class="col-md-offset-5 col-md-4 col-md-offset-3">
-            <h1 class="text-center text-black">requesting</h1>
-            <%= form_for @work, url: admin_work_path(@work.id), method: :requesting, data: { confirm: '本当に依頼しますか？'} do |f| %>
-              <%= f.text_field :user_id, placeholder: 'カメラマンのIDを入力してください', class: 'form-control' %>
-              <%= f.submit "依頼", class: 'btn-block btn-gray' %>
-            <% end %>
+        <% if @work.user_id == nil %>
+          <div class="row">
+            <div class="col-md-offset-5 col-md-4 col-md-offset-3">
+              <h1 class="text-center text-black">requesting</h1>
+              <%= form_for @work, url: admin_work_path(@work.id), method: :requesting, data: { confirm: '本当に依頼しますか？'} do |f| %>
+                <%= f.text_field :user_id, placeholder: 'カメラマンのIDを入力してください', class: 'form-control' %>
+                <%= f.submit "依頼", class: 'btn-block btn-gray' %>
+              <% end %>
+            </div>
           </div>
-        </div>
-        
+        <% end %>
       </div>
   </div>
 </div>

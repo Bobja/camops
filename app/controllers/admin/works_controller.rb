@@ -24,7 +24,6 @@ class Admin::WorksController < ApplicationController
   
   def show
     @work = Work.find(params[:id])
-    @user = @work.user
   end
   
   def edit
@@ -43,9 +42,11 @@ class Admin::WorksController < ApplicationController
   end
   
   def requesting
+    # render plain: params.inspect
+    
     @work = Work.find(params[:id])
-    @work.user_id = params[:user_id]
-    @work.status = "submitted"
+    @work.update_attributes(work_requesting_params)
+    @work.status = "requesting"
     if @work.save
       redirect_to admin_work_path, success: '案件の依頼をしました'
     else
@@ -67,6 +68,10 @@ class Admin::WorksController < ApplicationController
     
     def work_update_params
       params.require(:work).permit(:date, :name, :company, :address, :unitPrice, :totalPrice, :details)
+    end
+    
+    def work_requesting_params
+      params.require(:work).permit(:user_id)
     end
   
 end
