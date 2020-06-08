@@ -27,6 +27,10 @@ class Admin::WorksController < ApplicationController
     @user = @work.user
   end
   
+  def edit
+    @work = Work.find(params[:id])
+  end
+  
   def update
     @work = Work.find(params[:id])
     @work.update_attributes(work_update_params)
@@ -38,8 +42,16 @@ class Admin::WorksController < ApplicationController
     end
   end
   
-  def edit
+  def requesting
     @work = Work.find(params[:id])
+    @work.user_id = params[:user_id]
+    @work.status = "submitted"
+    if @work.save
+      redirect_to admin_work_path, success: '案件の依頼をしました'
+    else
+      flash.now[:danger] = '依頼に失敗しました'
+      render :edit
+    end
   end
   
   def destroy

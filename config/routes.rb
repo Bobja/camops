@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     resources :works
   end
   
+  post '/admin/works/:id', to: 'admin/works#requesting'
+  
 end
