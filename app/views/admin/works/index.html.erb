@@ -10,7 +10,6 @@
           <th>撮影場所</th>
           <th>ステータス</th>
           <th>詳細</th>
-          <th>削除</th>
         </tr>
       </thead>
       <tbody>
@@ -29,8 +28,7 @@
           	<% else %>
           	  <td><%= link_to work.status_i18n , "#", class: 'btn btn-block btn-silver-mini' %></td>
           	<% end %>
-          	<td><%= link_to '詳細', "#", class: 'btn btn-block btn-gray-mini' %></td>
-          	<td><%= link_to '削除', admin_work_path(work.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: 'btn btn-block btn-gray-mini' %></td>
+          	<td><%= link_to '詳細', admin_work_path(work.id), class: 'btn btn-block btn-gray-mini' %></td>
           </tr>
         <% end %>
       </tbody>

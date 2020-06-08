@@ -12,10 +12,10 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :destroy]
   end
   
-  resources :works, only: [:index, :show, :edit, :update]
+  resources :works, only: [:index, :show]
   
   namespace :admin do
-    resources :works, only: [:index, :new, :create, :destroy]
+    resources :works
   end
   
 end

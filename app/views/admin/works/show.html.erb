@@ -1,0 +1,33 @@
+<div class="work-show-wrapper text-center">
+  <div class="container">
+    <h1>Work details</h1>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="work-show-single text-left">
+            <h2 class="work-author">施行日：　<%= @work.date %></h2>
+            <h2 class="work-author">案件名：　<%= @work.name %></h2>
+            <h2 class="work-author">企業名：　<%= @work.company %></h2>
+            <h2 class="work-author">単価：　<%= @work.unitPrice %>円</h2>
+            <h2 class="work-author">合計金額：　<%= @work.totalPrice %>円</h2>
+            <h2 class="work-author">ステータス：　<%= @work.status_i18n %></h2>
+            <% if @work.user_id != nil %>
+              <h2 class="work-author">担当カメラマン：　<%= @user.name %></h2>
+            <% end %>
+            <h2 class="work-author">詳細：
+             <p><%= @work.details %></p>
+            </h2>
+            <h2 class="work-author">撮影場所：　<%= @work.address %></h2>
+          </div>
+          <div class="map">
+            <%= content_tag(:iframe, 'map', src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyCEv35kjleMjnt2Bfim9UiJxabMK_db4Wc&q=' + @work.address, width: 700, height: 400, frameborder: 0) %>
+          </div>
+        </div>
+        <div class="col-md-offset-3 col-md-4">
+          <%= link_to '編集', edit_admin_work_path, class: 'btn btn-block btn-gray' %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to '削除', admin_work_path(@work.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: 'btn btn-block btn-gray' %>
+        </div>
+      </div>
+  </div>
+</div>

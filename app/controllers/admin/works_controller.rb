@@ -22,6 +22,26 @@ class Admin::WorksController < ApplicationController
     end
   end
   
+  def show
+    @work = Work.find(params[:id])
+    @user = @work.user
+  end
+  
+  def update
+    @work = Work.find(params[:id])
+    @work.update_attributes(work_update_params)
+    if @work.save
+      redirect_to admin_work_path, success: '案件情報を更新しました'
+    else
+      flash.now[:danger] = '更新に失敗しました'
+      render :edit
+    end
+  end
+  
+  def edit
+    @work = Work.find(params[:id])
+  end
+  
   def destroy
     @work = Work.find(params[:id])
     @work.destroy
@@ -31,6 +51,10 @@ class Admin::WorksController < ApplicationController
   private
     def work_params
       params.require(:work).permit(:date, :name, :company, :address, :unitPrice, :details)
+    end
+    
+    def work_update_params
+      params.require(:work).permit(:date, :name, :company, :address, :unitPrice, :totalPrice, :details)
     end
   
 end
